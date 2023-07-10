@@ -24,7 +24,7 @@ let buttons = document.getElementsByClassName("but");
 let myprofil = document.getElementById("my-profil")
 let dataContainer = document.createElement("div");
 myprofil.appendChild(dataContainer);
-let data = []
+let counter = 0;
 
 zButton.addEventListener ("click", function() {
 let buttonText = zButton.textContent;
@@ -101,30 +101,19 @@ myprofil.value = buttonText;
     for (let i = 0; i < buttons.length; i++){
       buttons[i].addEventListener("click", function(){
         let buttonData = this.textContent;
-        data.push(buttonData);
+        let dataElement = document.createElement("span");
+        dataElement.textContent = buttonData + " ";
+        dataContainer.appendChild(dataElement);
+        counter++;
 
-        displayData();
+        if (counter % 3 === 0) {
+          let lineBreak = document.createElement("br");
+          dataContainer.appendChild(lineBreak);
+        }
+        
   
       });
     }
 
-    // function displayData(){
-    //   dataContainer.innerHTML = "";
 
-    //   for (let i = 0; i < data.length; i++) {
-    //     let dataElement = document.createElement("div");
-    //     let dataText = document.createElement("button");
-    //     deleteButton.dataset.index = i;
-    //     deleteButton.addEventListener("click", removeData);
-    //     dataElement.appendChild(dataText);
-    //     dataElement.appendChild(deleteButton);
-    //     dataContainer.appendChild(dataElement);
-    //     myprofil.appendChild(dataElement);
-    //   }
-    // }
 
-    // function removeData(event) {
-    //   let dataIndex = event.target.dataset.index();
-    //   data.splice(dataindex, 1);
-    //   displayData();
-    // }
